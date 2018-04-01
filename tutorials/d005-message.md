@@ -11,7 +11,7 @@
 
 #### 消息类型之间的关系
 
-![消息类结构图](https://raw.githubusercontent.com/li-jun-bo/DreamImage/master/uml/d005-message.png)
+![消息类结构图](https://raw.githubusercontent.com/im-gtedx/Image/master/message_arch.png)
 
 #### 消息类均包含以下属性
 

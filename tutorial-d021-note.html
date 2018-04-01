@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Tutorial: 群聊 | Gtedx IM SDK</title>
+    <title>Tutorial: 注意事项 | Gtedx IM SDK</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -54,63 +54,42 @@
     <header>
         
 
-        <h2>群聊</h2>
+        <h2>注意事项</h2>
     </header>
 
     
         <article class="readme">
-            <p>对于多人同时参与的固定群组，目前有成员人数限制。</p>
-<h2>发送消息</h2><p>Tom 想建立一个群，把自己好朋友都拉进这个群，然后给他们发消息，他需要做的事情是：</p>
-<ol>
-<li>建立一个朋友列表</li>
-<li>新建一个对话，把朋友们列为对话的参与人员</li>
-<li>发送消息</li>
-</ol>
-<pre class="prettyprint source lang-JavaScript"><code>import CacheApp from &quot;../../cache&quot;;
+            <ul>
+<li><p>页面与页面之间的传值</p>
+<ul>
+<li><p>注意</p>
+<blockquote>
+<p>无论您采用 React Navigation 还是 React Router，在页面之间传递的<a href="Conversation.html">Conversation</a>实例都是一个引用(句柄)，只要引用指向的实例存在于内存中，您无论在哪个页面操作的实例都是同一个。尤其要注意一下。</p>
+</blockquote>
+</li>
+<li><p>场景</p>
+<blockquote>
+<p>当用户从<strong>会话列表</strong>页面点击一个<strong>会话</strong>，进入了<strong>聊天页面</strong>，此时从前一个页面将<a href="Conversation.html">Conversation</a>实例传了进去。而在<strong>聊天页面</strong>我们根据组件化思想，将其分解为<strong>消息展示组件</strong>和<strong>消息输入组件</strong>，然后再将其接收到的<a href="Conversation.html">Conversation</a>实例分别传入这两个组件，在这种情况下的Coversation实例始终是同一个。</p>
+</blockquote>
+<pre class="prettyprint source lang-javascript"><code>    // 会话列表页面
 
-// Tom 用自己的个人标识UID，获取 ImClient 对象实例
-const tomClient = imService.createIMClient(GLOBAL.User.uid);
-imClient.setCache(new CacheApp()); // 实例化ImClient之后必须先设置缓存
+    navigation.navigate(RouteNames.Messages, {conversation: conversation});
 
-let params = {title:&quot;Tom with his friends&quot;,user_ids:[&quot;JerryUid&quot;,&quot;BobUid&quot;,&quot;HarryUid&quot;]};
+    // 进入聊天页面
 
-// 创建与 Jerry,Bob,Harry 之间的对话
-tomClient.createConversation(params)
-        .then(conversation => {
-             // 发送消息
-             let txtMsg = new TextMessage(&quot;浅水喧哗，深水静默&quot;);
-             return conversation.send(txtMsg);
-        }).then(message => {
-             GLOBAL.Toast(&quot;发送成功&quot;);
-        }).catch(error => {
-              GLOBAL.Toast(error.message);
-        });</code></pre><h2>接收消息</h2><p>群聊的接收消息与单聊的接收消息在代码写法上是一致的。</p>
-<pre class="prettyprint source"><code>import {Event as ET} from '@npm/im';
-import CacheApp from &quot;../../cache&quot;;
-
-// Bob 登录
-const jerryClient = imService.createIMClient(GLOBAL.User.uid);
-imClient.setCache(new CacheApp()); // 实例化ImClient之后必须先设置缓存
-
-jerryClient.on(ET.Message, this._onMessage);
-jerryClient.on(ET.Error, this._onError);
-
-// Harry 登录
-const jerryClient = imService.createIMClient(GLOBAL.User.uid);
-jerryClient.on(ET.Message, this._onMessage);
-jerryClient.on(ET.Error, this._onError);
-
-_onMessage = (message) => {
-    GLOBAL.Toast(&quot;message = &quot; + JSON.stringify(message));
-}
-
-_onError = (error) => {
-   GLOBAL.Toast(&quot;error = &quot; + JSON.stringify(error));
-}</code></pre><p>以上由 Tom发送的消息，Bob 和 Harry 在上线时都会收到。</p>
-<p>由此可以看出，<strong>群聊和单聊本质上都是对话</strong>，只是参与人数不同。单聊是一对一的对话，群聊是多对多的对话。</p>
-<p>用户在开始聊天之前，需要先登录 Gtedx IM 云端。这个登录并不需要用户名和密码认证，只是与 Gtedx IM 云端建立一个长连接，所以只需要传入一个唯一标识作为当前用户的 <code>uid</code> 即可。</p>
-<p>Gtedx IM  云端只要求<code>uid</code> 在应用内唯一、不超过<strong>64 个字符</strong>的字符串即可，具体用什么数据由应用层决定。</p>
-<p>Gtedx IM SDK 在内部会为每一个 <code>uid</code> 创建唯一的 <code>ImClient</code> 实例，也就是说多次使用相同的 <code>uid</code> 创建出来的实例还是同一个。因此，如果要支持同一个客户端内多账号登录，只要使用不同的 <code>uid</code> 来创建多个实例即可。我们的 SDK 也支持多账户同时登录。</p>
+    render() {
+        let conversation = this.props.navigation.state.params.conversation;
+        return (
+            &lt;View style={styles.container}>
+                &lt;MsgList style={styles.msg_list} conversation={conversation}/>
+                &lt;InputPanel style={styles.msg_input} conversation={conversation}/>
+            &lt;/View>
+        );
+    }</code></pre><p>​</p>
+</li>
+</ul>
+</li>
+</ul>
         </article>
     
 </section>

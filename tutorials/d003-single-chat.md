@@ -76,8 +76,8 @@ import CacheApp from "../../cache";
 const jerryClient = imService.createIMClient(GLOBAL.User.uid);
 imClient.setCache(new CacheApp()); // 实例化ImClient之后必须先设置缓存
 
-jerryClient.on(ET.MESSAGE, this._onMessage);
-jerryClient.on(ET.ERROR, this._onError);
+jerryClient.on(ET.Message, this._onMessage);
+jerryClient.on(ET.Error, this._onError);
 
 _onMessage = (message) => {
     GLOBAL.Toast("message = " + JSON.stringify(message));

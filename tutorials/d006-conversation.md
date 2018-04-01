@@ -5,12 +5,14 @@
 在讲解下面的内容之前，我们先使用 Jerry 的身份登录并创建一个多人对话。后面的举例中 `jerry` 指 Jerry 登录的 client，conversation 指创建好的这个对话，CONVERSATION_ID 指这个对话的 ID。
 
 ```
+import {ConversationField} from '@npm/im';
+
 let imClient = imservice.createImClient('Jerry')
 imClient.createConversation({
     user_ids: ['Bob', 'Harry', 'William'],
   });
 }).then(function(conversation) {
-  var CONVERSATION_ID = conversation.id;
+  var CONVERSATION_ID = conversation[ConversationField.ConversationId];
   // now we have jerry, conversation and CONVERSATION_ID
 })
 ```
@@ -94,7 +96,8 @@ TODO
 Tom 主动从对话中退出，他需要如下代码实现需求：
 
 ```
-conversation.quit().then(function(conversation) {
+conversation.quit()
+.then(function(conversation) {
   console.log('退出成功', conversation[ConversationField.MemberIds]);
   // 退出成功 ['Bob', 'Harry', 'William', 'Mary']
 }).catch(console.error.bind(console));
@@ -122,7 +125,7 @@ imClient.getConversation(CONVERSATION_ID)
 
 #### 查询成员数量【待实现】
 
-除了直接访问 `conversation[ConversationField.MemberIds].length`，也可以通过 `Conversation#count` 方法获得当前对话的成员数量：
+除了直接访问 `conversation[ConversationField.MemberIds].length`，也可以通过 `{@link Conversation#count}` 方法获得当前对话的成员数量：
 
 ```
 conversation.count()
@@ -159,7 +162,7 @@ tom.createConversation({
   user_ids: ['Black'],
   title: '喵星人',
 }).then(function(conversation) {
-  console.log('创建成功。id: ' + conversation.id + ' name: ' + conversation.name);
+  console.log('创建成功id: ' + conversation[ConversationField.ConversationId] + ' title: ' + conversation[ConversationField.Title]);
 }).catch(console.error.bind(console));
 ```
 
@@ -168,16 +171,102 @@ Black 发现对话名字不够酷，他想修改成「聪明的喵星人」 ，�
 ```
 black.getConversation(CONVERSATION_ID)
 .then(function(conversation) {
-  conversation.name = '聪明的喵星人';
+  conversation[ConversationField.Title] = '聪明的喵星人';
   return conversation.save();
 }).then(function(conversation) {
-  console.log('更新成功。name: ' + conversation.name);
+  console.log('更新成功title: ' + conversation[ConversationField.Title]);
 }).catch(console.error.bind(console));
 ```
 
 ## 会话的查询
 
+> 会话的查询分为两部分：**被动接收会话**和**主动查询会话**
+>
+> **主动查询会话**部分
+
+### 被动接收会话
+
+```
+    componentDidMount() {
+        this.imService = new ImService(GLOBAL.Options);
+        this.imClient = this.imService.createIMClient(GLOBAL.User.uid);
+        this.imClient.setCache(new CacheApp()); // 实例化ImClient之后必须先设置缓存
+        this.imClient.getConversations(); // 在程序初始化的时候，必须手动调用一次
+
+        this.imClient.on(ET.Conversations, this._onConversation);// 必须注册此事件，才能接收到会话列表数据
+        this.imClient.on(ET.Message, this._onMessage);
+        this.imClient.on(ET.Error, this._onError);
+
+        GLOBAL.ImClient = this.imClient;
+    }
+
+
+    _onConversation = (conversations) => {
+        this.setState({data: conversations});
+    }
+
+    _onMessage = (message) => {
+        GLOBAL.Toast("message = " + JSON.stringify(message));
+    }
+
+    _onError = (error) => {
+        GLOBAL.Toast("error = " + error.toString());
+    }
+```
+
+> 说明：
+>
+> imClient.getConversations(); 
+>
+> imClient.on(ET.Conversations, this._onConversation);
+>
+> 在程序初始化的时候，必须手动调用一次，在之后的与IM SDK交互的过程中无需再次调用。
+>
+> 只要在imClient实例上注册了{@link ImEvent}.CONVERSATIONS事件，
+>
+> 当有新的会话创建或者新的消息被接收|被发送，IM SDK会自动更新会话列表。
+
+### 主动查询会话【待实现】
+
+#### 根据 id 查询
+
+假如已知某一对话的 Id，可以使用它来查询该对话的详细信息：
+
+```
+tom.getConversation(CONVERSATION_ID)
+.then(function(conversation) {
+  console.log(conversation[ConversationField.ConversationId]);
+}).catch(console.error.bind(console));
+```
+
+#### 会话列表
+
+#### 条件查询
+
+条件查询又分为：比较查询、正则匹配查询、包含查询，组合查询，空值查询，以下会做分类演示。
+
+##### 比较查询
 
 
 
+##### 正则匹配查询
+
+
+
+##### 包含查询
+
+
+
+
+#### 查询结果选项
+
+##### 排序
+
+
+
+##### 精简模式
+
+
+
+##### 对话的最后一条消息
 

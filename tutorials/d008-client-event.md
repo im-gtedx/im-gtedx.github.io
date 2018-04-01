@@ -1,12 +1,66 @@
-TODO 待实现
+各种事件的应用场景可以参考{@link ImEvent}
+
+## {@link ImClient}的相关事件
+
+* ImEvent.Message 收发消息事件
+
+  ```javascript
+  imClient.on(ET.Message, this._onMessage);
+
+  _onMessage = (message) => {
+      GLOBAL.Toast("message = " + JSON.stringify(message));
+  }
+  ```
+
+* ImEvent.Conversations 会话自动刷新事件
+
+  ```javascript
+  imClient.on(ET.Conversations, this._onConversation);
+
+  _onConversation = (conversations) => {
+      this.setState({data: conversations});
+  }
+  ```
+
+
+* ImEvent.Error 错误事件
+
+  ```javascript
+  imClient.on(ET.Error, this._onError);
+
+  _onError = (error) => {
+      GLOBAL.Toast("error = " + error.toString());
+  }
+  ```
+
+## {@link Conversation}的相关事件
+
+- ImEvent.Message 会话收发消息事件
+
+  ```javascript
+  conversation.on(ET.Message, this._onReceiveMessage);
+
+  _onReceiveMessage = (message) => {
+      // update UI
+  }
+  ```
+
+- ImEvent.ConversationClearMessages 清除当前会话下的消息事件
+
+  ```
+  conversation.on(ET.ConversationClearMessages, this._onClearMessage);
+
+  _onClearMessage = () => {
+      this.setState({data: []});
+  }
+  ```
 
 ## 内部事件
 
+> 暂时不对外暴露
 
-## 会话事件
 
-
-## 网络事件
+## 网络事件【待实现】
 
 注意：在网络中断的情况下，所有的消息收发和对话操作都会失败。开发者应该监听与网络状态相关的事件并更新 UI，以免影响用户的使用体验。
 
