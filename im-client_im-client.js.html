@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Source: im-client/im-client.js | Gtedx IM SDK</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">Gtedx IM SDK</a></h1>
+        
+            <span class="version">v1.0.0</span>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+        <ol class="lnb-tab">
+            <li id="api-tab">
+                <a href="#"><h4>API</h4></a>
+            </li>
+            <li id="examples-tab">
+                <a href="#"><h4>Examples</h4></a>
+            </li>
+        </ol>
+    
+    <div class="lnb-examples hidden"><h3>Examples</h3><ul><li><a href="tutorial-d001-introduction.html">简介</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d001-introduction_sub"></div></li><li><a href="tutorial-d002-install-init.html">安装和初始化</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d002-install-init_sub"></div></li><li><a href="tutorial-d003-single-chat.html">单聊</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d003-single-chat_sub"></div></li><li><a href="tutorial-d004-group-chat.html">群聊</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d004-group-chat_sub"></div></li><li><a href="tutorial-d005-message.html">消息</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d005-message_sub"></div></li><li><a href="tutorial-d006-conversation.html">会话</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d006-conversation_sub"></div></li><li><a href="tutorial-d007-cache.html">缓存</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d007-cache_sub"></div></li><li><a href="tutorial-d008-client-event.html">事件</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d008-client-event_sub"></div></li><li><a href="tutorial-d009-signin.html">登录</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d009-signin_sub"></div></li><li><a href="tutorial-d010-signout.html">登出</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d010-signout_sub"></div></li><li><a href="tutorial-d011-reconnect.html">断线重连</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d011-reconnect_sub"></div></li><li><a href="tutorial-d021-note.html">注意事项</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d021-note_sub"></div></li><li><a href="tutorial-d022-update.html">方法更新</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d022-update_sub"></div></li></ul></div><div class="lnb-api hidden"><h3>Modules</h3><ul><li><a href="module-Overview.html">Overview</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:Overview_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="module-Overview.html#.Cache">Cache</a></li><li><a href="module-Overview.html#.Cb">Cb</a></li><li><a href="module-Overview.html#.Conversation">Conversation</a></li><li><a href="module-Overview.html#.ConversationField">ConversationField</a></li><li><a href="module-Overview.html#.ConversationType">ConversationType</a></li><li><a href="module-Overview.html#.Env">Env</a></li><li><a href="module-Overview.html#.Event">Event</a></li><li><a href="module-Overview.html#.ImageMessage">ImageMessage</a></li><li><a href="module-Overview.html#.ImConfig">ImConfig</a></li><li><a href="module-Overview.html#.ImService">ImService</a></li><li><a href="module-Overview.html#.Log">Log</a></li><li><a href="module-Overview.html#.Message">Message</a></li><li><a href="module-Overview.html#.MessageField">MessageField</a></li><li><a href="module-Overview.html#.Platform">Platform</a></li><li><a href="module-Overview.html#.TextMessage">TextMessage</a></li><li><a href="module-Overview.html#.TypedMessage">TypedMessage</a></li></ul></div></li></ul></div><div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="Cache.html">Cache</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Cache_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Cache.html#cacheConversation">cacheConversation</a></li><li><a href="Cache.html#cacheConversations">cacheConversations</a></li><li><a href="Cache.html#cacheMessage">cacheMessage</a></li><li><a href="Cache.html#cacheMessages">cacheMessages</a></li><li><a href="Cache.html#clearConversationMessages">clearConversationMessages</a></li><li><a href="Cache.html#clearMessages">clearMessages</a></li><li><a href="Cache.html#clearOverdueMessages">clearOverdueMessages</a></li><li><a href="Cache.html#deleteConversation">deleteConversation</a></li><li><a href="Cache.html#getConversation">getConversation</a></li><li><a href="Cache.html#getConversations">getConversations</a></li><li><a href="Cache.html#getLastMessageByCid">getLastMessageByCid</a></li><li><a href="Cache.html#getMessages">getMessages</a></li><li><a href="Cache.html#getUnreadMsgCount">getUnreadMsgCount</a></li><li><a href="Cache.html#readMessageByCid">readMessageByCid</a></li></ul></div></li><li><a href="Cb.html">Cb</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Cb_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Cb.html#.CodeNo">CodeNo</a></li><li><a href="Cb.html#.CodeOk">CodeOk</a></li><li><a href="Cb.html#.No">No</a></li><li><a href="Cb.html#.Ok">Ok</a></li><li><a href="Cb.html#code">code</a></li><li><a href="Cb.html#data">data</a></li><li><a href="Cb.html#message">message</a></li></ul></div></li><li><a href="Conversation.html">Conversation</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Conversation_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Conversation.html#add">add</a></li><li><a href="Conversation.html#clearMessages">clearMessages</a></li><li><a href="Conversation.html#count">count</a></li><li><a href="Conversation.html#getLastMessage">getLastMessage</a></li><li><a href="Conversation.html#getMessages">getMessages</a></li><li><a href="Conversation.html#join">join</a></li><li><a href="Conversation.html#quit">quit</a></li><li><a href="Conversation.html#read">read</a></li><li><a href="Conversation.html#remove">remove</a></li><li><a href="Conversation.html#save">save</a></li><li><a href="Conversation.html#send">send</a></li></ul></div></li><li><a href="ConversationField.html">ConversationField</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ConversationField_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ConversationField.html#.Attrs">Attrs</a></li><li><a href="ConversationField.html#.ConversationId">ConversationId</a></li><li><a href="ConversationField.html#.Icon">Icon</a></li><li><a href="ConversationField.html#.ManagerId">ManagerId</a></li><li><a href="ConversationField.html#.MemberIds">MemberIds</a></li><li><a href="ConversationField.html#.Remark">Remark</a></li><li><a href="ConversationField.html#.Title">Title</a></li><li><a href="ConversationField.html#.Type">Type</a></li><li><a href="ConversationField.html#.UnreadCount">UnreadCount</a></li></ul></div></li><li><a href="ConversationType.html">ConversationType</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ConversationType_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ConversationType.html#.Group">Group</a></li><li><a href="ConversationType.html#.Single">Single</a></li></ul></div></li><li><a href="Env.html">Env</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Env_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Env.html#.Dev">Dev</a></li><li><a href="Env.html#.Prd">Prd</a></li><li><a href="Env.html#.Test">Test</a></li></ul></div></li><li><a href="FileMessage.html">FileMessage</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FileMessage_sub"></div></li><li><a href="ImageMessage.html">ImageMessage</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImageMessage_sub"></div></li><li><a href="ImClient.html">ImClient</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImClient_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImClient.html#currentConversationList">currentConversationList</a></li><li><a href="ImClient.html#currentConversationList">currentConversationList</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="ImClient.html#clearMessages">clearMessages</a></li><li><a href="ImClient.html#clearOverdueMessages">clearOverdueMessages</a></li><li><a href="ImClient.html#close">close</a></li><li><a href="ImClient.html#createConversation">createConversation</a></li><li><a href="ImClient.html#disbandConversation">disbandConversation</a></li><li><a href="ImClient.html#getConversation">getConversation</a></li><li><a href="ImClient.html#getConversations">getConversations</a></li><li><a href="ImClient.html#getUnreadMsgCount">getUnreadMsgCount</a></li><li><a href="ImClient.html#pause">pause</a></li><li><a href="ImClient.html#refreshConversations">refreshConversations</a></li><li><a href="ImClient.html#reopen">reopen</a></li><li><a href="ImClient.html#resume">resume</a></li><li><a href="ImClient.html#setCache">setCache</a></li></ul></div></li><li><a href="ImConfig.html">ImConfig</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImConfig_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImConfig.html#client_id">client_id</a></li><li><a href="ImConfig.html#env">env</a></li><li><a href="ImConfig.html#platform">platform</a></li><li><a href="ImConfig.html#uid">uid</a></li></ul></div></li><li><a href="ImEvent.html">ImEvent</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImEvent_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImEvent.html#ConversationClearMessages">ConversationClearMessages</a></li><li><a href="ImEvent.html#Conversations">Conversations</a></li><li><a href="ImEvent.html#End">End</a></li><li><a href="ImEvent.html#Error">Error</a></li><li><a href="ImEvent.html#Message">Message</a></li><li><a href="ImEvent.html#UnreadMessagesCountUpdate">UnreadMessagesCountUpdate</a></li></ul></div></li><li><a href="ImService.html">ImService</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImService_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImService.html#options">options</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="ImService.html#createImClient">createImClient</a></li><li><a href="ImService.html#pause">pause</a></li><li><a href="ImService.html#resume">resume</a></li></ul></div></li><li><a href="ImType.html">ImType</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImType_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImType.html#.ErrorMsg">ErrorMsg</a></li><li><a href="ImType.html#.OffLine">OffLine</a></li><li><a href="ImType.html#.OnLine">OnLine</a></li><li><a href="ImType.html#.Received">Received</a></li><li><a href="ImType.html#.UserOnline">UserOnline</a></li></ul></div></li><li><a href="Message.html">Message</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Message_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Message.html#getMentionList">getMentionList</a></li><li><a href="Message.html#mentionAll">mentionAll</a></li><li><a href="Message.html#setMentionList">setMentionList</a></li></ul></div></li><li><a href="MessageFactory.html">MessageFactory</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="MessageFactory_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="MessageFactory.html#.createMessage">createMessage</a></li></ul></div></li><li><a href="MessageField.html">MessageField</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="MessageField_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="MessageField.html#.Attrs">Attrs</a></li><li><a href="MessageField.html#.ConversationID">ConversationID</a></li><li><a href="MessageField.html#.File">File</a></li><li><a href="MessageField.html#.Io">Io</a></li><li><a href="MessageField.html#.IsRead">IsRead</a></li><li><a href="MessageField.html#.MentionedAll">MentionedAll</a></li><li><a href="MessageField.html#.MentionedMe">MentionedMe</a></li><li><a href="MessageField.html#.MentionList">MentionList</a></li><li><a href="MessageField.html#.Message">Message</a></li><li><a href="MessageField.html#.MessageID">MessageID</a></li><li><a href="MessageField.html#.MessageType">MessageType</a></li><li><a href="MessageField.html#.SendBy">SendBy</a></li><li><a href="MessageField.html#.SendTime">SendTime</a></li></ul></div></li><li><a href="MessageType.html">MessageType</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="MessageType_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="MessageType.html#.Image">Image</a></li><li><a href="MessageType.html#.Text">Text</a></li></ul></div></li><li><a href="Platform.html">Platform</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Platform_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Platform.html#.App">App</a></li><li><a href="Platform.html#.Web">Web</a></li></ul></div></li><li><a href="ReconnectingWebSocket.html">ReconnectingWebSocket</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ReconnectingWebSocket_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ReconnectingWebSocket.html#.debugAll">debugAll</a></li><li><a href="ReconnectingWebSocket.html#automaticOpen">automaticOpen</a></li><li><a href="ReconnectingWebSocket.html#binaryType">binaryType</a></li><li><a href="ReconnectingWebSocket.html#close">close</a></li><li><a href="ReconnectingWebSocket.html#debug">debug</a></li><li><a href="ReconnectingWebSocket.html#maxReconnectAttempts">maxReconnectAttempts</a></li><li><a href="ReconnectingWebSocket.html#maxReconnectInterval">maxReconnectInterval</a></li><li><a href="ReconnectingWebSocket.html#protocol">protocol</a></li><li><a href="ReconnectingWebSocket.html#readyState">readyState</a></li><li><a href="ReconnectingWebSocket.html#reconnectAttempts">reconnectAttempts</a></li><li><a href="ReconnectingWebSocket.html#reconnectDecay">reconnectDecay</a></li><li><a href="ReconnectingWebSocket.html#reconnectInterval">reconnectInterval</a></li><li><a href="ReconnectingWebSocket.html#refresh">refresh</a></li><li><a href="ReconnectingWebSocket.html#send">send</a></li><li><a href="ReconnectingWebSocket.html#timeoutInterval">timeoutInterval</a></li><li><a href="ReconnectingWebSocket.html#url">url</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="ReconnectingWebSocket.html#onclose">onclose</a></li><li><a href="ReconnectingWebSocket.html#onconnecting">onconnecting</a></li><li><a href="ReconnectingWebSocket.html#onerror">onerror</a></li><li><a href="ReconnectingWebSocket.html#onmessage">onmessage</a></li><li><a href="ReconnectingWebSocket.html#onopen">onopen</a></li></ul></div></li><li><a href="TextMessage.html">TextMessage</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="TextMessage_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="TextMessage.html#attributes">attributes</a></li><li><a href="TextMessage.html#text">text</a></li><li><a href="TextMessage.html#type">type</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="TextMessage.html#getAttributes">getAttributes</a></li><li><a href="TextMessage.html#getMentionList">getMentionList</a></li><li><a href="TextMessage.html#getText">getText</a></li><li><a href="TextMessage.html#mentionAll">mentionAll</a></li><li><a href="TextMessage.html#setAttributes">setAttributes</a></li><li><a href="TextMessage.html#setMentionList">setMentionList</a></li><li><a href="TextMessage.html#setText">setText</a></li></ul></div></li><li><a href="TypedMessage.html">TypedMessage</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="TypedMessage_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="TypedMessage.html#attributes">attributes</a></li><li><a href="TypedMessage.html#text">text</a></li><li><a href="TypedMessage.html#type">type</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="TypedMessage.html#getAttributes">getAttributes</a></li><li><a href="TypedMessage.html#getMentionList">getMentionList</a></li><li><a href="TypedMessage.html#getText">getText</a></li><li><a href="TypedMessage.html#mentionAll">mentionAll</a></li><li><a href="TypedMessage.html#setAttributes">setAttributes</a></li><li><a href="TypedMessage.html#setMentionList">setMentionList</a></li><li><a href="TypedMessage.html#setText">setText</a></li></ul></div></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import EventEmitter from 'eventemitter3';
+import ET from '../ImEvent';
+import ImConfig from '../ImConfig';
+import NetApi from '../net'
+import Conversation from "../conversation/conversation";
+import ImType from "./im-type";
+import ConversationField from "../conversation/conversation-field";
+import MessageField from "../messages/message-field";
+import Log from "../log";
+import Cache from '../cache/Cache';
+import Cb from "../cache/Cb";
+import MessageFactory from "../messages/message-factory";
+import ReconnectingWebSocket from "./rw-socket";
+
+
+class ImClient extends EventEmitter {
+
+    /**
+     * 无法直接实例化，请使用 {@link ImService#createImClient} 创建新的 ImClient.
+     *
+     * @param {ImConfig} config
+     */
+    constructor(config) {
+        super();
+
+        if (!(config instanceof ImConfig)) {
+            throw new Error('ImClient 实例需要一个ImConfig实例.');
+        }
+
+        this.api = new NetApi(config.uid, config.env);
+        this.config = config;
+        this.cache = new Cache();
+
+        this._createWs();
+    }
+
+    /**
+     * 获取当前会话列表.
+     *
+     * @returns {Array&lt;Conversation>} 会话列表
+     */
+    get currentConversationList() {
+        return this._conversations ? this._conversations : [];
+    }
+
+    /**
+     * 更新当前会话列表.
+     *
+     * @param {Array&lt;Conversation>}  conversations 会话列表
+     */
+    set currentConversationList(conversations) {
+        this._conversations = conversations;
+    }
+
+    /**
+     * 设当前ImClient的缓存.
+     *
+     * @param {Cache} cache 缓存实例
+     * @tutorial d007-cache
+     */
+    setCache(cache) {
+        this.cache = cache;
+    }
+
+
+    /**
+     * 创建WebSocket链接.
+     * @private
+     */
+    _createWs() {
+        this.ws = new ReconnectingWebSocket(this.config.getWsUrl());
+        this.ws.debug = true;
+
+        this.ws.onopen = () => {
+        };
+
+        this.ws.onmessage = (event) => {
+            if (typeof event.data === 'string') {
+                this._postWsData(event.data);
+            }
+
+            if (event.data instanceof ArrayBuffer) {
+                throw new TypeError("接收到的是ArrayBuffer类型的数据");
+            }
+
+            if (event.data instanceof Blob) {
+                throw new TypeError("接收到的是Blob类型的数据");
+            }
+        };
+
+        this.ws.onclose = ev => {
+            this.emit(ET.Close, ev);
+        };
+
+        this.ws.onerror = ev => {
+            this.emit(ET.Error, ev);
+        };
+    }
+
+
+    /**
+     * 释放WebSocket链接.
+     * @private
+     */
+    _destroyWs() {
+        const ws = this.ws;
+        if (ws) this.ws = null;
+        ws.close();
+    }
+
+    /**
+     * 添加实例到内存会话列表中.
+     *
+     * @param conversation
+     * @private
+     */
+    _addConversation(conversation) {
+        if (!this.currentConversationList) return;
+        let conversationIndex = this.currentConversationList.findIndex(
+            cons => cons[ConversationField.ConversationId] === conversation[ConversationField.ConversationId]);
+        if (-1 === conversationIndex) {
+            this.currentConversationList.push(conversation);
+            this.refreshConversations();
+        }
+    }
+
+    /**
+     * 从内存会话列表中移除实例.
+     *
+     * @param conversation
+     * @private
+     */
+    _removeConversation(conversation) {
+        if (!this.currentConversationList) return;
+        let conversationIndex = this.currentConversationList.findIndex(
+            cons => cons[ConversationField.ConversationId] === conversation[ConversationField.ConversationId]);
+        if (-1 !== conversationIndex) {
+            this.currentConversationList.splice(conversationIndex, 1);
+            this.refreshConversations();
+        }
+    }
+
+
+    /**
+     *
+     赋予给Conversation行为方法
+     *
+     * @param conversations 会话列表数据
+     * @private
+     */
+    _mapConversations(conversations) {
+        let conversationResults = [];
+        for (let index in conversations) {
+            let conversationSource = conversations[index];
+            let conversationTarget = new Conversation(this);
+            let conversation = Object.assign(conversationTarget, conversationSource);
+            conversationResults.push(conversation);
+        }
+        this.currentConversationList = conversationResults;
+        this.refreshConversations();
+    }
+
+
+    /**
+     * @param wsData
+     * @private
+     */
+    _postWsData(wsData) {
+        // todo 注意json对象的转换.
+        wsData = JSON.parse(wsData);
+        let {type, data} = wsData;
+
+        switch (type) {
+            case ImType.OnLine:
+                this._postMessage(data);
+                break;
+
+            case ImType.OffLine:
+                data.forEach((message) => {
+                    this._postMessage(message);
+                });
+                break;
+
+            case ImType.Received:
+                // todo 后期作消息【发送成功】状态的更新
+                break;
+
+            case ImType.UserOnline:
+                let {code, message} = data;
+                if (code === 10001) this.emit(ET.End, message);
+                break;
+
+            case ImType.ErrorMsg:
+                this.emit(ET.Error, data);
+                break;
+        }
+    }
+
+
+    /**
+     * post message.
+     *
+     * @param message
+     * @private
+     */
+    _postMessage = (message) => {
+
+        //  构造带有行为的消息, 确定消息IO方向, 凡是接收到消息IO方向即为received(false)
+        let messageAction = MessageFactory.updateMessageMentioned2IoFalse(message, this.config.uid);
+
+        // 优先进行缓存【因为避免后面刷新最后一条消息不及时的问题】
+        this.cache.cacheMessage(messageAction)
+            .then(cb => {
+                if (Cb.CodeOk === cb.code) {
+                    let cid = message[MessageField.ConversationID];
+                    // 其次获取消息对应的会话
+                    return this.getConversation(cid);
+                } else {
+                    throw new Error(cb.message);
+                }
+            })
+            .then(conversation => {
+                // 发送给 Conversation &amp;&amp; 刷新会话列表【即最后一条消息】
+                conversation.emit(ET.Message, messageAction);
+
+                // 发送给 ImClient
+                this.emit(ET.Message, messageAction, conversation);
+
+                // 更新未读消息数量
+                return this.getUnreadMsgCount();
+            })
+            .then(() => {
+                Log.log("Update the number of unread messages successfully");
+            })
+            .catch(error => {
+                this.emit(ET.Error, error.message);
+            });
+
+    }
+
+
+    /**
+     * 重新刷新会话列表.
+     */
+    refreshConversations() {
+        this.emit(ET.Conversations, this.currentConversationList);
+    }
+
+    /**
+     * 创建会话.
+     *
+     * @param {Object} params {title:"私聊1",remark:"",manager_id:"",icon:"",user_ids:["9896d0783afa55ff194248ecc408baeb"],attrs:"",unique:true}
+     * @returns {PromiseLike&lt;T> | Promise&lt;T> | *}
+     */
+    createConversation(params) {
+        if (!params) {
+            throw new Error("创建会话的参数不能为空");
+        }
+
+        if (!params.title) {
+            throw new Error("创建会话的名称不能为空");
+        }
+
+        if (!Array.isArray(params.user_ids) || params.user_ids.length == 0) {
+            throw new Error("创建会话的成员不能为空");
+        }
+
+        // 参数最外层：body
+        let assignParams = {body: Object.assign(params, {manager_id: this.config.uid})};
+        Log.log(JSON.stringify(assignParams));
+
+        return this.api.createConversation(assignParams)
+            .then((response) => {
+                let {code, message, body} = response.data;
+                if (code == 200) { // 每一次创建会话成功之后，必须重新拉取会话列表
+                    // todo
+                    return body;
+                } else {
+                    throw new Error(message);
+                }
+            })
+            .then(conversation => {
+                return this.cache.cacheConversation(conversation);
+            })
+            .then(cb => {
+                if (cb.code === Cb.CodeOk) {
+                    // 赋予发送消息的行为
+                    let conversation = Object.assign(new Conversation(this), cb.data);
+                    this._addConversation(conversation);
+                    return conversation;
+                } else {
+                    throw new Error(cb.message);
+                }
+            });
+
+    }
+
+    /**
+     * 解散会话.
+     *
+     * @param {String} cid 会话ID
+     * @returns {PromiseLike&lt;T>}
+     */
+    disbandConversation(cid) {
+        let params = {body: {id: cid}};
+
+        return this.api.disbandGroup(params)
+        // ① 删除服务端会话数据
+            .then(response => {
+                let {code, message, body} = response.data;
+                if (code == 200) { // update db
+                    return body;
+                } else {
+                    throw new Error(message);
+                }
+            }) // ② 删除数据库中的会话数据
+            .then(conversation => {
+                return this.cache.deleteConversation(conversation);
+            })// ③ 返回当前对象
+            .then(cb => {
+                if (Cb.CodeOk === cb.code) {
+                    this._removeConversation(cb.data);
+                    return cb.data;
+                } else {
+                    throw new Error(cb.message);
+                }
+            });
+    }
+
+    /**
+     * 根据会话ID获取一个会话实例.
+     *
+     * @param {String} cid 会话ID
+     * @returns {PromiseLike&lt;T> | Promise&lt;T> | *}
+     */
+    getConversation(cid) {
+        if (this.currentConversationList) {
+            let conversation = this.currentConversationList.find(
+                conversation => conversation[ConversationField.ConversationId] === cid);
+
+            if (conversation) {
+                return Promise.resolve(conversation);
+
+            } else {
+                let params = {body: {id: cid}};
+                return this.api.getConversation(params) //access remote
+                    .then((response) => {
+                        let {code, message, body} = response.data;
+                        if (code == 200) {
+                            if (body) { // cache local
+                                return this.cache.cacheConversation(body);
+                            }
+                        } else {
+                            throw new Error(message);
+                        }
+                    }).then(cb => {
+                        if (Cb.CodeOk === cb.code) { // add memory
+                            // 先赋予Conversation的行为方法
+                            let conversationTarget = new Conversation(this);
+                            let conversation = Object.assign(conversationTarget, cb.data);
+                            // 再添加内存会话列表中
+                            this._addConversation(conversation);
+                            return conversation;
+                        } else {
+                            throw new Error(cb.message);
+                        }
+                    });
+            }
+
+        } else {
+            return Promise.reject("当前会话列表为空");
+        }
+    }
+
+    /**
+     * 获取会话列表.
+     */
+    getConversations() {
+        // 首先, 获取本地数据
+        this.cache.getConversations()
+            .then(cb => {
+                if (cb.data) {
+                    this._mapConversations(cb.data);
+                }
+                // 其次, 获取远程数据
+                return this.api.getConversations();
+            })
+            .then((response) => {
+                let {code, message, body} = response.data;
+                if (code == 200) {
+                    if (body &amp;&amp; body.length > 0) {
+                        this._mapConversations(body);
+                        // 然后，缓存会话列表到本地数据库
+                        return this.cache.cacheConversations(body);
+                    } else {
+                        return new Cb(Cb.CodeOk, "Conversation data is null, so not to cache.");
+                    }
+                } else {
+                    throw new Error(message);
+                }
+            })
+            .then(cb => { // 最后, 获取未读消息数量
+                Log.log("message of caching conversation list = " + cb.message);
+                return this.getUnreadMsgCount();
+            })
+            .then(() => {
+                Log.log("Update the number of unread messages successfully");
+            })
+            .catch((error) => { // todo ...
+                this.emit(ET.Error, error.message);
+            });
+    }
+
+
+    /**
+     * 清除缓存的所有消息.
+     */
+    clearMessages() {
+        return this.cache.clearMessages()
+            .then(cb => {
+                if (Cb.CodeNo === cb.code) throw new Error(cb.message);
+            });
+    }
+
+
+    /**
+     * 清除缓存的所有消息.
+     * @param {Number} msecs 毫秒数
+     */
+    clearOverdueMessages(msecs) {
+        return this.cache.clearOverdueMessages(msecs)
+            .then(cb => {
+                if (Cb.CodeNo === cb.code) throw new Error(cb.message);
+            });
+    }
+
+    /**
+     * 更新未读消息数量.&lt;br/>
+     * 请使用{@link Conversation#on}注册{@link ImEvent.Conversations}事件监听收到的会话列表&lt;br/>
+     * 一般情况下，开发者不需要手动调用此方法，在以下两个时机 IM SDK 会自动调用此方法进行未读消息数量的更新
+     * ① 手动调用 {@link Conversation#getConversations} 方法时 &lt;br/>
+     * ② 接收到他人发送的消息时 &lt;br/>
+     *
+     * @returns {Promise&lt;Cb>}
+     */
+    getUnreadMsgCount() {
+        return this.cache.getUnreadMsgCount(this.currentConversationList)
+            .then(cb => {
+                if (cb.code === Cb.CodeNo) return;
+                this.currentConversationList = cb.data;
+                this.refreshConversations();
+            });
+    }
+
+    /**
+     * 恢复在线状态.
+     */
+    resume() {
+        if (this.ws) this.ws.open(true);
+    }
+
+    /**
+     * 进入离线状态.
+     */
+    pause() {
+        if (this.ws) this.ws.close();
+    }
+
+    /**
+     * 重新建立连接.
+     */
+    reopen() {
+        this._createWs();
+    }
+
+    /**
+     * 关闭连接.
+     *
+     * @returns {Promise&lt;any>}
+     */
+    close() {
+        return new Promise((resolve, reject) => {
+            try {
+                let currentWsState = this.ws.readyState;
+                if (currentWsState == WebSocket.CONNECTING) {
+                    reject("正在连接中,不能进行此操作.");
+                } else if (currentWsState == WebSocket.OPEN) {
+                    this._destroyWs();
+                    resolve();
+                } else if (currentWsState == WebSocket.CLOSING) {
+                    reject("正在关闭中,不能重复此操作.");
+                } else if (currentWsState == WebSocket.CLOSED) {
+                    resolve();
+                }
+            } catch (e) {
+                reject(e.message);
+            }
+        });
+    }
+
+}
+
+export default ImClient;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">Copyright © 2018 Gtedx Pte Ltd</div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = '_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>

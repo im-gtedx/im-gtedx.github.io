@@ -1,0 +1,112 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Source: messages/file-message.js | Gtedx IM SDK</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">Gtedx IM SDK</a></h1>
+        
+            <span class="version">v1.0.0</span>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+        <ol class="lnb-tab">
+            <li id="api-tab">
+                <a href="#"><h4>API</h4></a>
+            </li>
+            <li id="examples-tab">
+                <a href="#"><h4>Examples</h4></a>
+            </li>
+        </ol>
+    
+    <div class="lnb-examples hidden"><h3>Examples</h3><ul><li><a href="tutorial-d001-introduction.html">简介</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d001-introduction_sub"></div></li><li><a href="tutorial-d002-install-init.html">安装和初始化</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d002-install-init_sub"></div></li><li><a href="tutorial-d003-single-chat.html">单聊</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d003-single-chat_sub"></div></li><li><a href="tutorial-d004-group-chat.html">群聊</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d004-group-chat_sub"></div></li><li><a href="tutorial-d005-message.html">消息</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d005-message_sub"></div></li><li><a href="tutorial-d006-conversation.html">会话</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d006-conversation_sub"></div></li><li><a href="tutorial-d007-cache.html">缓存</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d007-cache_sub"></div></li><li><a href="tutorial-d008-client-event.html">事件</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d008-client-event_sub"></div></li><li><a href="tutorial-d009-signin.html">登录</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d009-signin_sub"></div></li><li><a href="tutorial-d010-signout.html">登出</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d010-signout_sub"></div></li><li><a href="tutorial-d011-reconnect.html">断线重连</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d011-reconnect_sub"></div></li><li><a href="tutorial-d021-note.html">注意事项</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d021-note_sub"></div></li><li><a href="tutorial-d022-update.html">方法更新</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="d022-update_sub"></div></li></ul></div><div class="lnb-api hidden"><h3>Modules</h3><ul><li><a href="module-Overview.html">Overview</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:Overview_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="module-Overview.html#.Cache">Cache</a></li><li><a href="module-Overview.html#.Cb">Cb</a></li><li><a href="module-Overview.html#.Conversation">Conversation</a></li><li><a href="module-Overview.html#.ConversationField">ConversationField</a></li><li><a href="module-Overview.html#.ConversationType">ConversationType</a></li><li><a href="module-Overview.html#.Env">Env</a></li><li><a href="module-Overview.html#.Event">Event</a></li><li><a href="module-Overview.html#.ImageMessage">ImageMessage</a></li><li><a href="module-Overview.html#.ImConfig">ImConfig</a></li><li><a href="module-Overview.html#.ImService">ImService</a></li><li><a href="module-Overview.html#.Log">Log</a></li><li><a href="module-Overview.html#.Message">Message</a></li><li><a href="module-Overview.html#.MessageField">MessageField</a></li><li><a href="module-Overview.html#.Platform">Platform</a></li><li><a href="module-Overview.html#.TextMessage">TextMessage</a></li><li><a href="module-Overview.html#.TypedMessage">TypedMessage</a></li></ul></div></li></ul></div><div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="Cache.html">Cache</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Cache_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Cache.html#cacheConversation">cacheConversation</a></li><li><a href="Cache.html#cacheConversations">cacheConversations</a></li><li><a href="Cache.html#cacheMessage">cacheMessage</a></li><li><a href="Cache.html#cacheMessages">cacheMessages</a></li><li><a href="Cache.html#clearConversationMessages">clearConversationMessages</a></li><li><a href="Cache.html#clearMessages">clearMessages</a></li><li><a href="Cache.html#clearOverdueMessages">clearOverdueMessages</a></li><li><a href="Cache.html#deleteConversation">deleteConversation</a></li><li><a href="Cache.html#getConversation">getConversation</a></li><li><a href="Cache.html#getConversations">getConversations</a></li><li><a href="Cache.html#getLastMessageByCid">getLastMessageByCid</a></li><li><a href="Cache.html#getMessages">getMessages</a></li><li><a href="Cache.html#getUnreadMsgCount">getUnreadMsgCount</a></li><li><a href="Cache.html#readMessageByCid">readMessageByCid</a></li></ul></div></li><li><a href="Cb.html">Cb</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Cb_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Cb.html#.CodeNo">CodeNo</a></li><li><a href="Cb.html#.CodeOk">CodeOk</a></li><li><a href="Cb.html#.No">No</a></li><li><a href="Cb.html#.Ok">Ok</a></li><li><a href="Cb.html#code">code</a></li><li><a href="Cb.html#data">data</a></li><li><a href="Cb.html#message">message</a></li></ul></div></li><li><a href="Conversation.html">Conversation</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Conversation_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Conversation.html#add">add</a></li><li><a href="Conversation.html#clearMessages">clearMessages</a></li><li><a href="Conversation.html#count">count</a></li><li><a href="Conversation.html#getLastMessage">getLastMessage</a></li><li><a href="Conversation.html#getMessages">getMessages</a></li><li><a href="Conversation.html#join">join</a></li><li><a href="Conversation.html#quit">quit</a></li><li><a href="Conversation.html#read">read</a></li><li><a href="Conversation.html#remove">remove</a></li><li><a href="Conversation.html#save">save</a></li><li><a href="Conversation.html#send">send</a></li></ul></div></li><li><a href="ConversationField.html">ConversationField</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ConversationField_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ConversationField.html#.Attrs">Attrs</a></li><li><a href="ConversationField.html#.ConversationId">ConversationId</a></li><li><a href="ConversationField.html#.Icon">Icon</a></li><li><a href="ConversationField.html#.ManagerId">ManagerId</a></li><li><a href="ConversationField.html#.MemberIds">MemberIds</a></li><li><a href="ConversationField.html#.Remark">Remark</a></li><li><a href="ConversationField.html#.Title">Title</a></li><li><a href="ConversationField.html#.Type">Type</a></li><li><a href="ConversationField.html#.UnreadCount">UnreadCount</a></li></ul></div></li><li><a href="ConversationType.html">ConversationType</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ConversationType_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ConversationType.html#.Group">Group</a></li><li><a href="ConversationType.html#.Single">Single</a></li></ul></div></li><li><a href="Env.html">Env</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Env_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Env.html#.Dev">Dev</a></li><li><a href="Env.html#.Prd">Prd</a></li><li><a href="Env.html#.Test">Test</a></li></ul></div></li><li><a href="FileMessage.html">FileMessage</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FileMessage_sub"></div></li><li><a href="ImageMessage.html">ImageMessage</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImageMessage_sub"></div></li><li><a href="ImClient.html">ImClient</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImClient_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImClient.html#currentConversationList">currentConversationList</a></li><li><a href="ImClient.html#currentConversationList">currentConversationList</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="ImClient.html#clearMessages">clearMessages</a></li><li><a href="ImClient.html#clearOverdueMessages">clearOverdueMessages</a></li><li><a href="ImClient.html#close">close</a></li><li><a href="ImClient.html#createConversation">createConversation</a></li><li><a href="ImClient.html#disbandConversation">disbandConversation</a></li><li><a href="ImClient.html#getConversation">getConversation</a></li><li><a href="ImClient.html#getConversations">getConversations</a></li><li><a href="ImClient.html#getUnreadMsgCount">getUnreadMsgCount</a></li><li><a href="ImClient.html#pause">pause</a></li><li><a href="ImClient.html#refreshConversations">refreshConversations</a></li><li><a href="ImClient.html#reopen">reopen</a></li><li><a href="ImClient.html#resume">resume</a></li><li><a href="ImClient.html#setCache">setCache</a></li></ul></div></li><li><a href="ImConfig.html">ImConfig</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImConfig_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImConfig.html#client_id">client_id</a></li><li><a href="ImConfig.html#env">env</a></li><li><a href="ImConfig.html#platform">platform</a></li><li><a href="ImConfig.html#uid">uid</a></li></ul></div></li><li><a href="ImEvent.html">ImEvent</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImEvent_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImEvent.html#ConversationClearMessages">ConversationClearMessages</a></li><li><a href="ImEvent.html#Conversations">Conversations</a></li><li><a href="ImEvent.html#End">End</a></li><li><a href="ImEvent.html#Error">Error</a></li><li><a href="ImEvent.html#Message">Message</a></li><li><a href="ImEvent.html#UnreadMessagesCountUpdate">UnreadMessagesCountUpdate</a></li></ul></div></li><li><a href="ImService.html">ImService</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImService_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImService.html#options">options</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="ImService.html#createImClient">createImClient</a></li><li><a href="ImService.html#pause">pause</a></li><li><a href="ImService.html#resume">resume</a></li></ul></div></li><li><a href="ImType.html">ImType</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ImType_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ImType.html#.ErrorMsg">ErrorMsg</a></li><li><a href="ImType.html#.OffLine">OffLine</a></li><li><a href="ImType.html#.OnLine">OnLine</a></li><li><a href="ImType.html#.Received">Received</a></li><li><a href="ImType.html#.UserOnline">UserOnline</a></li></ul></div></li><li><a href="Message.html">Message</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Message_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Message.html#getMentionList">getMentionList</a></li><li><a href="Message.html#mentionAll">mentionAll</a></li><li><a href="Message.html#setMentionList">setMentionList</a></li></ul></div></li><li><a href="MessageFactory.html">MessageFactory</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="MessageFactory_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="MessageFactory.html#.createMessage">createMessage</a></li></ul></div></li><li><a href="MessageField.html">MessageField</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="MessageField_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="MessageField.html#.Attrs">Attrs</a></li><li><a href="MessageField.html#.ConversationID">ConversationID</a></li><li><a href="MessageField.html#.File">File</a></li><li><a href="MessageField.html#.Io">Io</a></li><li><a href="MessageField.html#.IsRead">IsRead</a></li><li><a href="MessageField.html#.MentionedAll">MentionedAll</a></li><li><a href="MessageField.html#.MentionedMe">MentionedMe</a></li><li><a href="MessageField.html#.MentionList">MentionList</a></li><li><a href="MessageField.html#.Message">Message</a></li><li><a href="MessageField.html#.MessageID">MessageID</a></li><li><a href="MessageField.html#.MessageType">MessageType</a></li><li><a href="MessageField.html#.SendBy">SendBy</a></li><li><a href="MessageField.html#.SendTime">SendTime</a></li></ul></div></li><li><a href="MessageType.html">MessageType</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="MessageType_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="MessageType.html#.Image">Image</a></li><li><a href="MessageType.html#.Text">Text</a></li></ul></div></li><li><a href="Platform.html">Platform</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Platform_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Platform.html#.App">App</a></li><li><a href="Platform.html#.Web">Web</a></li></ul></div></li><li><a href="ReconnectingWebSocket.html">ReconnectingWebSocket</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ReconnectingWebSocket_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="ReconnectingWebSocket.html#.debugAll">debugAll</a></li><li><a href="ReconnectingWebSocket.html#automaticOpen">automaticOpen</a></li><li><a href="ReconnectingWebSocket.html#binaryType">binaryType</a></li><li><a href="ReconnectingWebSocket.html#close">close</a></li><li><a href="ReconnectingWebSocket.html#debug">debug</a></li><li><a href="ReconnectingWebSocket.html#maxReconnectAttempts">maxReconnectAttempts</a></li><li><a href="ReconnectingWebSocket.html#maxReconnectInterval">maxReconnectInterval</a></li><li><a href="ReconnectingWebSocket.html#protocol">protocol</a></li><li><a href="ReconnectingWebSocket.html#readyState">readyState</a></li><li><a href="ReconnectingWebSocket.html#reconnectAttempts">reconnectAttempts</a></li><li><a href="ReconnectingWebSocket.html#reconnectDecay">reconnectDecay</a></li><li><a href="ReconnectingWebSocket.html#reconnectInterval">reconnectInterval</a></li><li><a href="ReconnectingWebSocket.html#refresh">refresh</a></li><li><a href="ReconnectingWebSocket.html#send">send</a></li><li><a href="ReconnectingWebSocket.html#timeoutInterval">timeoutInterval</a></li><li><a href="ReconnectingWebSocket.html#url">url</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="ReconnectingWebSocket.html#onclose">onclose</a></li><li><a href="ReconnectingWebSocket.html#onconnecting">onconnecting</a></li><li><a href="ReconnectingWebSocket.html#onerror">onerror</a></li><li><a href="ReconnectingWebSocket.html#onmessage">onmessage</a></li><li><a href="ReconnectingWebSocket.html#onopen">onopen</a></li></ul></div></li><li><a href="TextMessage.html">TextMessage</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="TextMessage_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="TextMessage.html#attributes">attributes</a></li><li><a href="TextMessage.html#text">text</a></li><li><a href="TextMessage.html#type">type</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="TextMessage.html#getAttributes">getAttributes</a></li><li><a href="TextMessage.html#getMentionList">getMentionList</a></li><li><a href="TextMessage.html#getText">getText</a></li><li><a href="TextMessage.html#mentionAll">mentionAll</a></li><li><a href="TextMessage.html#setAttributes">setAttributes</a></li><li><a href="TextMessage.html#setMentionList">setMentionList</a></li><li><a href="TextMessage.html#setText">setText</a></li></ul></div></li><li><a href="TypedMessage.html">TypedMessage</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="TypedMessage_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="TypedMessage.html#attributes">attributes</a></li><li><a href="TypedMessage.html#text">text</a></li><li><a href="TypedMessage.html#type">type</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="TypedMessage.html#getAttributes">getAttributes</a></li><li><a href="TypedMessage.html#getMentionList">getMentionList</a></li><li><a href="TypedMessage.html#getText">getText</a></li><li><a href="TypedMessage.html#mentionAll">mentionAll</a></li><li><a href="TypedMessage.html#setAttributes">setAttributes</a></li><li><a href="TypedMessage.html#setMentionList">setMentionList</a></li><li><a href="TypedMessage.html#setText">setText</a></li></ul></div></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import TypedMessage from './typed-message';
+import MessageField from "./message-field";
+
+class FileMessage extends TypedMessage {
+
+
+    /**
+     * 文件消息.
+     *
+     * @param {File} file 各种类型的文件
+     */
+    constructor(file) {
+        if (!(file instanceof File)) {
+            throw new TypeError('file must be an File');
+        }
+        super();
+
+        Object.assign(this, {[MessageField.File]: file});
+    }
+
+
+}
+
+export default FileMessage;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">Copyright © 2018 Gtedx Pte Ltd</div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = '_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>
