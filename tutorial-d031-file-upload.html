@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Tutorial: 消息 | Gtedx IM SDK</title>
+    <title>Tutorial: 文件上传 | Gtedx IM SDK</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -54,25 +54,74 @@
     <header>
         
 
-        <h2>消息</h2>
+        <h2>文件上传</h2>
     </header>
 
     
         <article class="readme">
-            <p>消息是一个对话的基本组成部分，我们支持的消息类型有：</p>
-<ul>
-<li>文本消息：<code>TextMessage</code></li>
-<li>图像消息：<code>ImageMessage</code> </li>
-<li>音频消息：<code>AudioMessage</code> 【待实现】</li>
-<li>视频消息：<code>VideoMessage</code> 【待实现】</li>
-<li>文件消息：<code>FileMessage</code> 【待实现】</li>
-<li>位置消息：<code>LocationMessage</code> 【待实现】</li>
-</ul>
-<h2>消息类详解</h2><h4>消息类型之间的关系</h4><p><img src="https://raw.githubusercontent.com/im-gtedx/Image/master/message_arch.png" alt="消息类结构图"></p>
-<h4>消息类均包含以下属性</h4><blockquote>
-<p><a href="MessageField.html">MessageField</a> 类是SDK提供的消息类<a href="Message.html">Message</a>的属性枚举类。具体包括以下属性：</p>
+            <blockquote>
+<p>文件路径：统一使用 <a href="https://en.wikipedia.org/wiki/File_URI_scheme">File URI</a> 进行标识。</p>
+<p>对于React Native，开发者根据Android和IOS两大平台的系统，自行获取URI格式的文件路径。</p>
+<p>对于React，开发者根据Linux、Mac、Windows三大平台的系统，使用 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/OSFile.jsm/OS.Path">Web API</a> 进行获取。</p>
+<p>最终的格式：<code>file:///myfilepath/extensions/filename.png</code></p>
+<p>参考资料：</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition">《Content-Disposition》</a>    </p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData">《FormData》</a> </p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/Using_FormData_Objects">《FormData 对象的使用》</a> </p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">《encodeURI()》</a> </p>
 </blockquote>
-<table>
+<h2>文件上传</h2><p>我们要创建一个<a href="ImFile.html">ImFile</a>实例，然后调用该实例的save方法。</p>
+<pre class="prettyprint source lang-javascript"><code>let params = {file: file_uri,name:&quot;gtedx.png&quot;};
+let imFile = imClient.createFile(params);
+imFile.save()
+    .then(fileInfo => {
+        console.log(fileInfo);
+    }).catch(e => {
+        console.log(e.message);
+    });</code></pre><h4>参数对象-params</h4><pre class="prettyprint source lang-json"><code>{file: 'file_uri',type:'image/png',name:'file_name'}</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">必填</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">file</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">FIle URI</td>
+<td style="text-align:left">是</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">MimeType</td>
+<td style="text-align:left">否：如果不填，则SDK会根据文件的扩展名动态填写</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">File Name</td>
+<td style="text-align:left">否：如果不填，则SDK会根据文件名称动态填写</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>获取文件对应的MIME_TYPE的参考库</p>
+<p>Mobile <a href="https://github.com/Liroo/react-native-mime-types">react-native-mime-types</a> </p>
+<p>Web      <a href="https://github.com/jshttp/mime-types">mime-types</a>  <a href="https://github.com/broofa/node-mime">mime</a></p>
+</blockquote>
+<h4>结果对象-fileInfo</h4><pre class="prettyprint source lang-json"><code>{
+    &quot;name&quot;: &quot;gtedx.png&quot;, 
+    &quot;extension&quot;: &quot;png&quot;,
+    &quot;mime_type&quot;: &quot;image/png&quot;,
+    &quot;size&quot;: 154879,
+    &quot;width&quot;: 1440,// 图片会返回宽高
+    &quot;height&quot;: 1424,// 图片会返回宽高
+    &quot;server_url&quot;: &quot;https://path20180426105856_name.jpg&quot;
+}</code></pre><table>
 <thead>
 <tr>
 <th style="text-align:left">属性</th>
@@ -82,172 +131,46 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">message_id</td>
+<td style="text-align:left">name</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">消息ID</td>
+<td style="text-align:left">文件名</td>
 </tr>
 <tr>
-<td style="text-align:left">message_type</td>
+<td style="text-align:left">extension</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">消息类型, 具体参见【<a href="MessageType.html">MessageType</a>】</td>
+<td style="text-align:left">扩展名</td>
 </tr>
 <tr>
-<td style="text-align:left">message</td>
+<td style="text-align:left">mime_type</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">文本消息或图片消息的描述</td>
+<td style="text-align:left">MimeType</td>
 </tr>
 <tr>
-<td style="text-align:left">file</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left">文件 URI - 是指发送者的本地文件的URI，在消息的发送方有效</td>
+<td style="text-align:left">size</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">文件大小-[单位：byte]</td>
 </tr>
 <tr>
-<td style="text-align:left">uri</td>
+<td style="text-align:left">width</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">网络 URI - 是指文件的网络URI，在服务器中存在</td>
+<td style="text-align:left">宽-[一般用于图片文件]</td>
 </tr>
 <tr>
-<td style="text-align:left">conversation_id</td>
+<td style="text-align:left">height</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">消息所属的会话ID</td>
+<td style="text-align:left">高-[一般用于图片文件]</td>
 </tr>
 <tr>
-<td style="text-align:left">send_time</td>
+<td style="text-align:left">server_url</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">消息发送时间</td>
-</tr>
-<tr>
-<td style="text-align:left">send_by</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left">消息发送者</td>
-</tr>
-<tr>
-<td style="text-align:left">io</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left">消息传输方向，有两种取值<code>true : send</code> 或 <code>false : received</code></td>
-</tr>
-<tr>
-<td style="text-align:left">attrs</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left">自定义属性, 具体参见下方《自定义消息属性》部分。</td>
+<td style="text-align:left">文件公开地址</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>消息ID生成规则【<code>message_id</code> = uid + uuid】</p>
+<p>具体参见<a href="ImFile.html">ImFile</a>实例</p>
 </blockquote>
-<h2>自定义消息属性</h2><p>在某些场景下，开发者需要在发送消息时附带上自己业务逻辑需求的自定义属性，比如发送消息时携带设备名称，或发送消息携带自己的个人信息。开发者可以通过自定义消息属性实现这一需求。</p>
-<p><strong>【场景一】发送文本消息给对方，让其知道我用的是什么手机跟他在聊天：</strong></p>
-<pre class="prettyprint source lang-javascript"><code>let message = new TextMessage(&quot;静水流深&quot;);
-message.setAttributes({
-  phone: 'IPhone X',
-});
-conversation.send(message).then(function() {
-  console.log('发送成功');
-}).catch(console.error.bind(console));
-</code></pre><p>接收时可以读取这一属性：</p>
-<pre class="prettyprint source lang-javascript"><code>client.on('message', function(message) {
-  console.log(message.getAttributes().phone); // IPhone X
-});
-</code></pre><p><strong>【场景二】在跟对方聊天的详情页，发送消息携带自己的个人信息，从而展示出头像和昵称。</strong></p>
-<pre class="prettyprint source lang-javascript"><code>let message = new TextMessage(&quot;宁静致远&quot;);
-// GLOBAL.User
-const user = {
-    id: &quot;9896d0783afa55ff194248ecc408baeb&quot;,
-    name: &quot;Gtedx&quot;,
-    avatar: &quot;https://avatar.jpg&quot;
-}
-message.setAttributes(user);
-
-conversation.send(message).then(function() {
-  console.log('发送成功');
-}).catch(console.error.bind(console));
-</code></pre><p>接收时可以读取这一属性：</p>
-<pre class="prettyprint source lang-javascript"><code>client.on('message', function(message) {
-  console.log(message.getAttributes()); 
-  // {id: &quot;9896d0783afa55ff194248ecc408baeb&quot;,name: &quot;Gtedx&quot;,avatar: &quot;https://avatar.jpg&quot;}
-});
-</code></pre><blockquote>
-<p>所有的 <code><a href="TypedMessage.html">TypedMessage</a></code> 消息都支持 <code>attrs</code> 这一属性。</p>
-</blockquote>
-<h2>消息的有效期</h2><p>一个会话的消息记录会在缓存本地，只要用户不清除缓存或清除当前会话的消息，会一直存在于本地。Gtedx IM 云端只负责转发消息。对于离线消息，云端会暂时缓存，等用户再次登录或建立连接，就会一次性推给客户端。</p>
-<h4>清除所有的本地消息</h4><pre class="prettyprint source"><code>imClient.clearMessages()
-    .then(() => {
-        GLOBAL.Toast(&quot;消息已清空&quot;);
-    })
-    .catch(e => {
-        GLOBAL.Toast(e.message);
-    });</code></pre><h4>清除会话的本地消息</h4><pre class="prettyprint source"><code>conversation.clearMessages()
-    .then(() => {
-        GLOBAL.Toast(&quot;清空聊天记录成功&quot;);
-     }).catch(e => {
-        GLOBAL.Toast(e.message);
-     });</code></pre><h2>消息发送选项</h2><p>消息发送选项用于在发送消息时定义消息的一些特性。包含以下特性：</p>
-<h4>成员提醒@</h4><p>发送消息的时候可以显式地指定这条消息提醒某一个或者一些人:</p>
-<pre class="prettyprint source lang-javascript"><code>const message = new TextMessage(`@Tom`).setMentionList('Tom').mentionAll();</code></pre><p>或者也可以提醒所有人：</p>
-<pre class="prettyprint source lang-javascript"><code>const message = new TextMessage(`@all`).mentionAll();</code></pre><p>消息的接收方，可以通过读取消息的提醒列表来获取哪些 client Id 被提醒了：</p>
-<pre class="prettyprint source lang-javascript"><code>client.on('message', function messageEventHandler(message, conversation) {
-  var mentionList = message.getMentionList();
-});</code></pre><p>消息有一个标识位，用来标识是否提醒了当前对话的全体成员:</p>
-<pre class="prettyprint source lang-javascript"><code>client.on('message', function messageEventHandler(message, conversation) {
-  var mentionedAll = message.mentionedAll;
-});</code></pre><p>消息另一个标识位用来标识当前用户是否被提醒，SDK 通过读取消息是否提醒了全体成员和当前 client id 是否在被提醒的列表里这两个条件计算出来当前用户是否被提醒：</p>
-<pre class="prettyprint source lang-javascript"><code>client.on('message', function messageEventHandler(message, conversation) {
-  var mentioned = receivedMessage.mentioned;
-});</code></pre><h4>消息回执【待实现】</h4><h5>送达回执</h5><h5>已读回执</h5><h2>未读消息</h2><p>未读消息数量通知功能是根据平台<a href="Platform.html">Platform</a>，在平台本地实现的。</p>
-<p>SDK 会在 <a href="Conversation.html">Conversation</a> 上维护 <code><a href="ConversationField.html#.UnreadCount">ConversationField.UnreadCount</a></code> 字段，这个字段在变化时 <code>ImClient</code> 会派发 <code>ImEvent.Conversations</code> 事件。这个字段会在下面这些情况下发生变化：</p>
-<ul>
-<li>登录时，IM SDK 通知会话的未读消息数</li>
-<li>收到在线消息</li>
-<li>用户将对话标记为已读</li>
-</ul>
-<p>开发者应当监听 <code>ImEvent.Conversations</code> 事件，在对话列表界面上更新这些对话的未读消息数量。</p>
-<blockquote>
-<p>与会话的被动查询是同一个事件，</p>
-</blockquote>
-<h4>会话列表的未读消息更新</h4><pre class="prettyprint source lang-javascript"><code>imClient.on(ImEvent.Conversations, this._onConversation);
-
-_onConversation = (conversations) => {
-    if (conversations && conversations.length > 0) {
-        // 会话列表
-        let data = conversations.slice();
-        this.setState({data});
-
-        // 未读消息
-        let unreadMessageCount = 0;
-        data.forEach(cs => {
-           unreadMessageCount += cs[ConversationField.UnreadCount];
-        });
-        this.setState({unreadMessageCount});
-    } else {
-        this.setState({data: [], unreadMessageCount: 0});
-    }
-}
-</code></pre><h4>会话实例的未读消息更新</h4><pre class="prettyprint source lang-javascript"><code>/**直接在Item UI中获取Conversation的ConversationField.UnreadCount展示即可*/
-render() { 
-    let {conversation} = this.props;
-    let title = conversation[ConversationField.Title];
-    let avatar = conversation[ConversationField.Icon];
-    let unread_count = conversation[ConversationField.UnreadCount];
-    return &lt;View/>
-}</code></pre><p>清除对话未读消息数的唯一方式是调用 <code><a href="Conversation.html#read">Conversation#read</a></code> 方法将对话标记为已读，一般来说开发者至少需要在下面两种情况下将对话标记为已读：</p>
-<ul>
-<li>在对话列表点击某对话进入到对话页面时</li>
-<li>用户正在某个对话页面聊天，并在这个对话中收到了消息时</li>
-</ul>
-<pre class="prettyprint source lang-javascript"><code>// 进入到对话页面时标记其为已读
-conversation.read().then(function(conversation) {
-  console.log('对话已标记为已读');
-}).catch(console.error.bind(console));
-
-// 当前聊天的对话收到了消息立即标记为已读
-currentConversation.on('message', function() {
-  currentConversation.read().catch(console.error.bind(console));
-})
-</code></pre><blockquote>
-<p>【待实现】后期根据业务可能会需要。</p>
-<p>当用户标记某个对话为已读时，该用户其他在线的客户端也会得到通知，SDK 会自动将该对话的未读消息数更新为 0。</p>
-</blockquote>
+<h2>文件下载</h2>
         </article>
     
 </section>

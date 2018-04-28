@@ -1,7 +1,7 @@
 消息是一个对话的基本组成部分，我们支持的消息类型有：
 
 - 文本消息：`TextMessage`
-- 图像消息：`ImageMessage` 【待实现】
+- 图像消息：`ImageMessage` 
 - 音频消息：`AudioMessage` 【待实现】
 - 视频消息：`VideoMessage` 【待实现】
 - 文件消息：`FileMessage` 【待实现】
@@ -22,6 +22,8 @@
 | message_id | string | 消息ID |
 | message_type | string | 消息类型, 具体参见【{@link MessageType}】 |
 | message | string | 文本消息或图片消息的描述 |
+| file | string | 文件 URI - 是指发送者的本地文件的URI，在消息的发送方有效 |
+| uri | string | 网络 URI - 是指文件的网络URI，在服务器中存在 |
 | conversation_id | string | 消息所属的会话ID |
 | send_time | string | 消息发送时间 |
 | send_by | string | 消息发送者 |

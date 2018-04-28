@@ -32,10 +32,16 @@
   "d011-reconnect": {
     "title": "断线重连"
   },
+  "d012-multi-media-message": {
+    "title": "富媒体消息"
+  },
   "d021-note": {
     "title": "注意事项"
   },
   "d022-update": {
     "title": "方法更新"
+  },
+  "d031-file-upload": {
+    "title": "文件上传"
   }
 }

@@ -72,6 +72,22 @@
   }
   ```
 
+- ImEvent.ManualGetLastMessage 手动获取最后一条消息的事件
+
+  ```javascript
+  conversation.on(ET.ManualGetLastMessage, this._getLastMessage);
+
+  _getLastMessage = () => {
+      let {conversation} = this.props;
+      conversation.getLastMessage()
+          .then(message => {
+          	// 更新UI
+           }).catch(error => {
+          
+      });
+  }
+  ```
+
 - ImEvent.ConversationClearMessages 清除当前会话下的消息事件
 
   ```
