@@ -116,9 +116,22 @@ console.log(animals.slice(2, 4));
  }</code></pre></li>
 </ol>
 <h2>Cache for React Web</h2><p>而在Web平台上我们采用<strong><a href="http://lokijs.org/">LokiJS</a></strong>，一个内存数据库。对于用户来说，没有大量的数据可供查询。所以对于消息列表的数据展示，开发者只要一次性查询出来，展示到页面上并滑动到底部即可。</p>
-<h4>前端缓存集成</h4><blockquote>
-<p>此缓存方案待实现</p>
+<h4>前端缓存集成</h4><ol>
+<li><p>参考<a href="http://lokijs.org/">LokiJS官网</a>，安装好LokiJS</p>
+<blockquote>
+<p>也可以参考我个人博客里面翻译的<a href="https://blog.lijunbo.com/2018/05/03/lokijs_index/">《LokiJS 中文文档》</a> </p>
 </blockquote>
+</li>
+<li><p>将<a href="https://gitlab-ce.gtedx.com/npm/im-web-demo">Demo</a>项目下的<code>src/cache</code>目录下的文件复制到你的项目中</p>
+<p><img src="https://raw.githubusercontent.com/im-gtedx/Image/master/cache_web.png" alt="cache"></p>
+</li>
+<li><p>在创建<a href="ImClient.html">ImClient</a>实例后，给其设置缓存</p>
+<pre class="prettyprint source lang-javascript"><code>componentDidMount() {
+    this.imService = new ImService(GLOBAL.Options);
+    this.imClient = this.imService.createIMClient(GLOBAL.User.uid);
+    this.imClient.setCache(new CacheApp()); 
+}</code></pre></li>
+</ol>
         </article>
     
 </section>

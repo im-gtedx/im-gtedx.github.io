@@ -84,4 +84,22 @@ console.log(animals.slice(2, 4));
 
 #### 前端缓存集成
 
-> 此缓存方案待实现
+
+1. 参考[LokiJS官网](http://lokijs.org/)，安装好LokiJS
+
+   > 也可以参考我个人博客里面翻译的[《LokiJS 中文文档》](https://blog.lijunbo.com/2018/05/03/lokijs_index/) 
+
+2. 将[Demo](https://gitlab-ce.gtedx.com/npm/im-web-demo)项目下的`src/cache`目录下的文件复制到你的项目中
+
+   ![cache](https://raw.githubusercontent.com/im-gtedx/Image/master/cache_web.png)
+
+3. 在创建{@link ImClient}实例后，给其设置缓存
+
+   ```javascript
+   componentDidMount() {
+       this.imService = new ImService(GLOBAL.Options);
+       this.imClient = this.imService.createIMClient(GLOBAL.User.uid);
+       this.imClient.setCache(new CacheApp()); 
+   }
+   ```
+
