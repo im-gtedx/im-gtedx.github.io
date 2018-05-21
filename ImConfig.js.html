@@ -94,7 +94,7 @@ class ImConfig {
      * WS地址
      * @private
      */
-    ws_url = "ws://dev.hylaa.net:9501";
+    ws_url = "wss://chat.hylaa.net:443";
 
 
     //---------------------------------------------------------------------------------------------------------------------//
@@ -113,16 +113,13 @@ class ImConfig {
 
         switch (this.env) {
             case Env.Dev:
-                this.ws_url = "ws://dev.hylaa.net:9501";
+                this.ws_url = "wss://chat.hylaa.net:8443";
                 break;
             case Env.Test:
-                this.ws_url = "ws://test.hylaa.net:9502";
+                this.ws_url = "wss://chat-test.hylaa.net:443";
                 break;
             case Env.Prd:
-                this.ws_url = "ws://prd.hylaa.net:9501";
-                break;
-            default:
-                this.ws_url = "ws://dev.hylaa.net:9501";
+                this.ws_url = "wss://chat-test.hylaa.net:443";
                 break;
         }
 

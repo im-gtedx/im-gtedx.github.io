@@ -62,8 +62,10 @@
             <h2>安装</h2><p>建议使用 NPM 安装 SDK，在终端运行以下命令：</p>
 <pre class="prettyprint source"><code>// 稳定版(发版时使用)
 npm i -S git+ssh://git@gitlab-ce.gtedx.com:npm/im.git
+npm i -S git+https://git@gitlab-ce.gtedx.com:npm/im.git
 // 开发版(开发迭代时使用,通过添加新功能或者修复bug之后,其后的版本号会随之更新)
-npm i -S git+ssh://git@gitlab-ce.gtedx.com:npm/im.git#V0.0.1</code></pre><blockquote>
+npm i -S git+ssh://git@gitlab-ce.gtedx.com:npm/im.git#V0.0.5
+npm i -S git+https://git@gitlab-ce.gtedx.com:npm/im.git#V0.0.5</code></pre><blockquote>
 <p> 版本号遵循《<a href="https://semver.org/lang/zh-CN/">语义化版本 2.0.0</a>》</p>
 <p>注意 : 使用此种方式(git+ssh)安装的包, 再使用 <code>npm update</code> 是无法更新私有模块，想更新只能重新安装一次.</p>
 </blockquote>
@@ -101,7 +103,7 @@ export {options};</code></pre><p>在程序一开始初始化的部分进行全�
 <pre class="prettyprint source"><code>import {options} from '../../config';
 GLOBAL.Options=  options;</code></pre><blockquote>
 <p>Platform 是 SDK 提供的枚举类，根据<strong>运行平台</strong>目前有两种取值. 参见[<a href="Platform.html">Platform</a>]</p>
-<p>Env 是 SDK 提供的枚举类，根据<strong>运行环境</strong>目前有两种取值. 参见[<a href="Platform.html">Platform</a>]</p>
+<p>Env 是 SDK 提供的枚举类，根据<strong>运行环境</strong>目前有两种取值. 参见[<a href="Env.html">Env</a>]</p>
 </blockquote>
         </article>
     

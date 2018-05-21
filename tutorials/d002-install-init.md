@@ -5,8 +5,10 @@
 ```
 // 稳定版(发版时使用)
 npm i -S git+ssh://git@gitlab-ce.gtedx.com:npm/im.git
+npm i -S git+https://git@gitlab-ce.gtedx.com:npm/im.git
 // 开发版(开发迭代时使用,通过添加新功能或者修复bug之后,其后的版本号会随之更新)
-npm i -S git+ssh://git@gitlab-ce.gtedx.com:npm/im.git#V0.0.1
+npm i -S git+ssh://git@gitlab-ce.gtedx.com:npm/im.git#V0.0.5
+npm i -S git+https://git@gitlab-ce.gtedx.com:npm/im.git#V0.0.5
 ```
 
 >  版本号遵循《[语义化版本 2.0.0](https://semver.org/lang/zh-CN/)》
@@ -74,5 +76,5 @@ export {options};
 
 > Platform 是 SDK 提供的枚举类，根据**运行平台**目前有两种取值. 参见[{@link Platform}]
 >
-> Env 是 SDK 提供的枚举类，根据**运行环境**目前有两种取值. 参见[{@link Platform}]
+> Env 是 SDK 提供的枚举类，根据**运行环境**目前有两种取值. 参见[{@link Env}]
 
