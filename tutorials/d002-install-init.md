@@ -36,9 +36,10 @@ import {Env, Platform} from '@npm/im';
 
 // 配置运行平台 | 配置运行的环境.
 const options = { 
-    platform: Platform.App,  // 如果不设置默认为{@link Platform.App}
-    env: Env.Dev, // 如果不设置默认为{@link Env.Dev}
-    client_id:"uuid"// 32位的UUID
+	oid: "organization-id", //【必填项】相当于组织的标识
+    client_id:"uuid",		//【必填项】32位的UUID
+    platform: Platform.App, //【非必填项】如果不设置默认为{@link Platform.App}
+    env: Env.Dev			//【非必填项】如果不设置默认为{@link Env.Dev}
 }
 
 const imService = new ImService(options);

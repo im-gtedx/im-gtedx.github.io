@@ -7,7 +7,7 @@
 ```javascript
 import {ConversationField} from '@npm/im';
 
-let imClient = imservice.createImClient('Jerry')
+let imClient = imservice.createImClient('uid');
 imClient.createConversation({
     user_ids: ['Bob', 'Harry', 'William'],
   });
@@ -20,18 +20,30 @@ imClient.createConversation({
 ## 创建会话
 
 ```javascript
-jerry.createConversation({
+imClient.createConversation({
   user_ids: ['Bob', 'Harry', 'William'],
-  title: '周末滑雪'
+  title: '周末滑雪',
   unique: false,
 });
 ```
 
 参数说明：
 
-- user_ids - 会话的初始成员列表。在会话创建成功后，这些成员会收到和邀请加入会话一样的相应通知。
-- title - 对话的名字，主要是用于标记对话，让用户更好地识别会话。
-- unique - 是否创建唯一对话，当其为 true 时，如果当前已经有**相同成员**的对话存在则返回该对话，否则会创建新的对话。该值默认为 false。
+- user_ids (必填) - 会话的初始成员列表。在会话创建成功后，这些成员会收到和邀请加入会话一样的相应通知。
+- title (非必填) - 对话的名字，主要是用于标记对话，让用户更好地识别会话。
+- unique (非必填) - 是否创建唯一对话，当其为 true 时，如果当前已经有**相同成员**的对话存在则返回该对话，否则会创建新的对话。该值默认为 false。
+
+## 删除会话
+
+```javascript
+imClient.disbandConversation('conversation_id')
+        .then(conversation => GLOBAL.Toast("成功删除并退出群聊"))
+    	.catch(error => GLOBAL.Toast(error.message));
+```
+
+参数说明：
+
+- conversation_id (字符串&必填) - 会话的ID。
 
 ## 会话的成员管理
 
@@ -183,6 +195,10 @@ black.getConversation(CONVERSATION_ID)
 
 ### 被动接收会话
 
+> 主要用于当前用户获取自身的所有会话
+
+#### 获取会话列表
+
 ```javascript
     componentDidMount() {
         this.imService = new ImService(GLOBAL.Options);
@@ -196,7 +212,6 @@ black.getConversation(CONVERSATION_ID)
 
         GLOBAL.ImClient = this.imClient;
     }
-
 
     _onConversation = (conversations) => {
         this.setState({data: conversations});
@@ -223,9 +238,8 @@ black.getConversation(CONVERSATION_ID)
 >
 > 当有新的会话创建或者新的消息被接收|被发送，IM SDK会自动更新会话列表。
 
-### 主动查询会话【待实现】
 
-#### 根据 id 查询【已实现】
+#### 获取单个会话【根据 id 查询】
 
 假如已知某一对话的 Id，可以使用它来查询该对话的详细信息：
 
@@ -236,7 +250,26 @@ tom.getConversation(CONVERSATION_ID)
 }).catch(console.error.bind(console));
 ```
 
+### 主动查询会话【待实现】
+
 #### 会话列表
+
+```javascript
+let query = imClient.getConversationQuery();
+query.getOrgConversations()
+	 .then(conversations => console.log(conversations.length))
+	 .catch(error => console.error.bind(console));
+```
+
+> 【{@link ConversationQuery}】 : 对业务提供的会话进行查询的辅助类，可进行链式调用。
+
+返回结果：
+
+- conversations (数组) - 会话列表，此列表中的每个会话都赋予了({@link Conversation})的行为。
+
+  > 注意：这些数据仅仅展示给业务方使用，你可以调用会话({@link Conversation})的{@link Conversation#add} 和 {@link Conversation#remove} 和 {@link Conversation#save} 方法进行对会话成员和会话属性的操作。
+
+#### 获取单个会话【根据 id 查询】
 
 #### 条件查询
 

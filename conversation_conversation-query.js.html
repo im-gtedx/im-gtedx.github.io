@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Source: im-client/im-type.js | Gtedx IM SDK</title>
+    <title>Source: conversation/conversation-query.js | Gtedx IM SDK</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -57,48 +57,48 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * 
+            <pre class="prettyprint source linenums"><code>import Conversation from "./conversation";
+
+/**
+ * 会话查询.
  */
-class ImType {
+class ConversationQuery {
 
-    /**
-     * 在线消息
-     */
-    static get OnLine(){
-        return 'ONLINE';
+    constructor(imClient) {
+        this.imClient = imClient;
     }
 
     /**
-     * 离线消息
+     * 获取当前组织的当前用户的会话列表.
+     *
+     * @returns {*|PromiseLike&lt;T>|Promise&lt;T>}
      */
-    static get OffLine(){
-        return 'OFFLINE';
+    getOrgConversations() {
+        let {oid} = this.imClient.config;
+        let params = {body: {tenant_id: oid}};
+        return this.imClient.api.getOrgConversations(params)
+            .then((response) => {
+                let {code, message, body} = response.data;
+                if (code == 200) {
+                    if (body) {
+                        let conversationResults = [];
+                        for (let index in body) {
+                            let conversationSource = body[index];
+                            let conversationTarget = new Conversation(this.imClient);
+                            let conversation = Object.assign(conversationTarget, conversationSource);
+                            conversationResults.push(conversation);
+                        }
+                        return conversationResults;
+                    }
+                } else {
+                    throw new Error(message);
+                }
+            });
     }
 
-    /**
-     * 消息已接受
-     */
-    static get Received(){
-        return 'RECEIVED';
-    }
-
-    /**
-     * 不同端的同一用户上线
-     */
-    static get UserOnline(){
-        return 'USER_ONLINE';
-    }
-
-    /**
-     * 错误消息
-     */
-    static get ErrorMsg(){
-        return 'ERROR_MESSAGE';
-    }
 }
 
-export default ImType;</code></pre>
+export default ConversationQuery;</code></pre>
         </article>
     </section>
 
