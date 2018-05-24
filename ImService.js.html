@@ -74,6 +74,7 @@ class ImService extends EventEmitter {
      * @param  {String} options.platform 运行平台:传值参照 {@link Platform}
      * @param  {String} options.env 运行环境 : 传值参照 {@link Env}
      * @param  {String} options.client_id 设备ID
+     * @param  {String} options.oid 机构组织的标识[organization ID]
      */
     constructor(options) {
         super();
@@ -96,6 +97,10 @@ class ImService extends EventEmitter {
 
         if (typeof options.client_id !== 'string') {
             throw new TypeError(`client_id [${options.client_id}] is not a string`);
+        }
+
+        if (typeof options.oid !== 'string') {
+            throw new TypeError(`client_id [${options.oid}] is not a string`);
         }
 
         this.options = options;
